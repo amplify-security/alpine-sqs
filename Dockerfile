@@ -5,7 +5,7 @@
 
 FROM appropriate/curl as Builder
 
-ARG jq_version=1.5
+ARG elasticmq_version=1.6.1
 
 WORKDIR /tmp/sqs-alpine
 
@@ -13,10 +13,6 @@ RUN \
   apk add --update git \
   && rm -rf /var/cache/apk/* \
   && git clone --verbose --depth=1 https://github.com/kobim/sqs-insight.git \
-  && curl -L -o /usr/local/bin/jq https://github.com/stedolan/jq/releases/download/jq-${jq_version}/jq-linux64 \
-  && chmod +x /usr/local/bin/jq \
-  && export elasticmq_version=$(curl -sL https://api.github.com/repos/adamw/elasticmq/releases/latest | jq -r .tag_name) \
-  && elasticmq_version=${elasticmq_version//v} \
   && curl -LO https://s3-eu-west-1.amazonaws.com/softwaremill-public/elasticmq-server-${elasticmq_version}.jar \
   && mv elasticmq-server-${elasticmq_version}.jar elasticmq-server.jar
 
