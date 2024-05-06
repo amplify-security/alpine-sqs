@@ -1,5 +1,8 @@
 # Alpine SQS _(alpine-sqs)_
 
+> [!NOTE]
+> This repository of alpine-sqs is maintained by Amplify Security and published at [`amplifysecurity/alpine-sqs`](https://hub.docker.com/r/amplifysecurity/alpine-sqs) until certain features are merged in the original repo at [`roribio/alpine-sqs`](https://github.com/roribio/alpine-sqs).
+
 ![banner](https://raw.githubusercontent.com/roribio/alpine-sqs/master/banner.png)
 
 [![](https://images.microbadger.com/badges/image/roribio16/alpine-sqs.svg)](https://microbadger.com/images/roribio16/alpine-sqs "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/roribio16/alpine-sqs.svg)](https://microbadger.com/images/roribio16/alpine-sqs "Get your own version badge on microbadger.com") [![Docker Pulls](https://img.shields.io/docker/stars/roribio16/alpine-sqs.svg)](https://hub.docker.com/r/roribio16/alpine-sqs/) [![Docker Pulls](https://img.shields.io/docker/pulls/roribio16/alpine-sqs.svg)](https://hub.docker.com/r/roribio16/alpine-sqs/) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
