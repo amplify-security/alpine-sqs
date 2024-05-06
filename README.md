@@ -1,5 +1,8 @@
 # Alpine SQS _(alpine-sqs)_
 
+> [!NOTE]
+> This repository of alpine-sqs is maintained by Amplify Security and published at [`amplifysecurity/alpine-sqs`](https://hub.docker.com/r/amplifysecurity/alpine-sqs) until certain features are merged in the original repo at [`roribio/alpine-sqs`](https://github.com/roribio/alpine-sqs).
+
 ![banner](https://raw.githubusercontent.com/roribio/alpine-sqs/master/banner.png)
 
 [![](https://images.microbadger.com/badges/image/roribio16/alpine-sqs.svg)](https://microbadger.com/images/roribio16/alpine-sqs "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/roribio16/alpine-sqs.svg)](https://microbadger.com/images/roribio16/alpine-sqs "Get your own version badge on microbadger.com") [![Docker Pulls](https://img.shields.io/docker/stars/roribio16/alpine-sqs.svg)](https://hub.docker.com/r/roribio16/alpine-sqs/) [![Docker Pulls](https://img.shields.io/docker/pulls/roribio16/alpine-sqs.svg)](https://hub.docker.com/r/roribio16/alpine-sqs/) [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
@@ -66,7 +69,7 @@ Depending on how you chose to install the environment, you can initialize it in 
 Use this method if you're pulling directly from Docker Hub and do not have a `docker-compose.yml` file.
 
 ```
-docker run --name alpine-sqs -p 9324:9324 -p 9325:9325 -d roribio16/alpine-sqs:latest
+docker run --name alpine-sqs -p 9324:9324 -p 9326:9326 -d roribio16/alpine-sqs:latest
 ```
 
 Custom configuration files may be used to override default behaviors. You can mount a volume mapping the container's `/opt/custom` directory to a folder in your host machine where the custom configuration files are stored.
@@ -74,7 +77,7 @@ Custom configuration files may be used to override default behaviors. You can mo
 Providing for sake of example that in your host machine directory `/opt/alpine-sqs` you have both `elasticmq.conf` and `sqs-insight.conf` files, you can run the container with:
 
 ```
-docker run --name alpine-sqs -p 9324:9324 -p 9325:9325 -v /opt/alpine-sqs:/opt/custom -d roribio16/alpine-sqs:latest
+docker run --name alpine-sqs -p 9324:9324 -p 9326:9326 -v /opt/alpine-sqs:/opt/custom -d roribio16/alpine-sqs:latest
 ```
 
 For any configuration file not explicitly included in the container's `/opt/custom` directory, `alpine-sqs` will fall back to using the default configuration files listed [here](https://github.com/roribio/alpine-sqs/tree/master/opt).
@@ -116,13 +119,15 @@ aws --endpoint-url http://localhost:9324 sqs send-message --queue-url http://loc
 ```
 
 #### Viewing messages
-To view messages, navigate to the web UI ([sqs-insight](https://github.com/finanzcheck/sqs-insight)) by pointing your web browser to `http://localhost:9325`.
+To view messages, navigate to the web UI ([sqs-insight](https://github.com/finanzcheck/sqs-insight)) by pointing your web browser to `http://localhost:9326`.
 
 You can also poll for messages from the command-line like so:
 
 ```
 aws --endpoint-url http://localhost:9324 sqs receive-message --queue-url http://localhost:9324/queue/default --wait-time-seconds 10
 ```
+
+> **Note**: The web UI previously was hosted on port 9325 but has been moved to 9326. Later versions of ElasticMQ host a stats API on port 9325 so the web UI was moved.
 
 ### Creating new queues
 You can create new queues by using the command-line or configuring ElasticMQ directly.
