@@ -37,7 +37,7 @@ RUN \
   && cd /opt/sqs-insight \
   && npm install
 
-EXPOSE 9324 9325 
+EXPOSE 9324 9325 9326
 
 ENTRYPOINT ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/supervisord.conf"]
 
